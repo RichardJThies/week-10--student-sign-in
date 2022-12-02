@@ -16,9 +16,9 @@
 
 <script>
 export default { // export default means another JS file can read whatever is inside. Whatever is read will be available to the reading file
-    name: studentMessage, //studentMessage will be sent a student to display a message for by App.vue
+    name: 'StudentMessage', //studentMessage will be sent a student to display a message for by App.vue
     props: {
-        students: Object // data class, not a value
+        student: Object // data class, not a value
     }
 }
 

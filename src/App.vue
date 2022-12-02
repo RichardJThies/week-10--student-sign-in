@@ -1,28 +1,28 @@
 <template>
-<div id="app">
-  <new-student-form v-on:student-added="newStudentAdded"></new-student-form><!--App.vue receives event from newStudentForm, calls method-->
-  <student-table 
-  v-bind:students="students" 
-  v-on:student-arrived-or-left="studentArrivedOrLeft"></student-table><!--App.vue sends student array to studentTable prop. Reveives event back with new data after input-->
-  <student-message v-bind:student="mostRecentStudent"></student-message><!--App.vue will send studentMessage data for it's prop-->
+  <div id="app">
+    <new-student-form v-on:student-added="newStudentAdded"></new-student-form><!--App.vue receives event from newStudentForm, calls method-->
+    <student-table 
+    v-bind:students="students" 
+    v-on:student-arrived-or-left="studentArrivedOrLeft"></student-table><!--App.vue sends student array to studentTable prop. Reveives event back with new data after input-->
+    <student-message v-bind:student="mostRecentStudent"></student-message><!--App.vue will send studentMessage data for it's prop-->
 
 
 
-</div>
+  </div>
 </template>
 
 <script>
-import newStudentForm from './components/newStudentForm.vue';
-import studentMessage from './components/studentMessage.vue';
-import studentTable from './components/studentTable.vue';
+import NewStudentForm from './components/newStudentForm.vue';
+import StudentMessage from './components/studentMessage.vue';
+import StudentTable from './components/studentTable.vue';
 
 
 export default {
   name: 'App',
   components: {
-    newStudentForm,
-    studentMessage,
-    studentTable
+    NewStudentForm,
+    StudentMessage,
+    StudentTable
   },
   data() { // function returns object
     return {

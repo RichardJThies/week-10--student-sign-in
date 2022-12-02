@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!----template/html-->
         <div class="alert alert-danger" v-if="errors.length > 0"> <!--Bootstrap alert-->
             <ul>
                 <li v-for="error in errors">{{error}}</li> <!--loops over any error messages for display-->
@@ -31,7 +30,7 @@
 
 <script>
 export default { // export default means another JS file can read whatever is inside. Whatever is read will be available to the reading file
-    name: 'NewStudentFom', // common to give component same name as the file name
+    name: 'NewStudentForm', // common to give component same name as the file name
     emits: ['student-added'], //array documents events this component emits
     data() {
         return {

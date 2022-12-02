@@ -28,7 +28,7 @@
 
 <script>
 export default { // export default means another JS file can read whatever is inside. Whatever is read will be available to the reading file
-    name: 'studentTable', // studentTable is given a list of students to draw/display in the table. App.vue will manage array of students which it will provide to studentTable
+    name: 'StudentTable', // studentTable is given a list of students to draw/display in the table. App.vue will manage array of students which it will provide to studentTable
     emits: ['student-arrived-or-left'], //document what what component does, what event it emits
     props: {
         students: Array // Array is a data type, not value
