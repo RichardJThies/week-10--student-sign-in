@@ -11,6 +11,7 @@
 <script>
 export default {
     name: 'StudentRow',
+    emits: ['student-arrived-or-left'], //document what what component does, what event it emits
     props: {
         student: Object
     },
