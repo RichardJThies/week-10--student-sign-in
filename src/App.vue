@@ -19,7 +19,7 @@ import StudentTable from './components/studentTable.vue';
 
 export default {
   name: 'App',
-  components: {
+  components: {// lets App know it has child components
     NewStudentForm,
     StudentMessage,
     StudentTable
