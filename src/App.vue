@@ -3,11 +3,9 @@
     <new-student-form v-on:student-added="newStudentAdded"></new-student-form><!--App.vue receives event from newStudentForm, calls method-->
     <student-table 
     v-bind:students="students" 
-    v-on:student-arrived-or-left="studentArrivedOrLeft"></student-table><!--App.vue sends student array to studentTable prop. Reveives event back with new data after input-->
+    v-on:student-arrived-or-left="studentArrivedOrLeft"
+    v-on:delete-student="deleteStudent"></student-table><!--App.vue sends student array to studentTable prop. Reveives event back with new data after input. Receives event to delete student-->
     <student-message v-bind:student="mostRecentStudent"></student-message><!--App.vue will send studentMessage data for it's prop-->
-
-
-
   </div>
 </template>
 
@@ -15,7 +13,6 @@
 import NewStudentForm from './components/newStudentForm.vue';
 import StudentMessage from './components/studentMessage.vue';
 import StudentTable from './components/studentTable.vue';
-
 
 export default {
   name: 'App',
@@ -49,6 +46,13 @@ export default {
         updateStudent.present = present
         this.mostRecentStudent = updateStudent//make sure mostRecentStudent is assign its namesake
       }
+    },
+    deleteStudent(student) {
+      this.students = this.students.filter(function(s) {//.filter takes a function as an argument. It checks every student in student array, if they match a condition, they stay. If not, they are removed
+        if(s != student) {//filter returns new array when the function returns true
+          return true //undefined is treated as false
+        }
+      })
     }
   }
 }
@@ -56,9 +60,4 @@ export default {
 
 <style>
 @import "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"; /*App.vue is the parent component and the page itself. Therefore bootstrap will be applied to all components*/
-
-
-
-
-
 </style>

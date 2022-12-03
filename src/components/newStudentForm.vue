@@ -23,8 +23,6 @@
 
             <button class="btn btn-primary" v-on:click="addStudent">Add</button> <!--v-on connects the button to the addStudent method-->
         </div>
-
-
     </div>
 </template>
 
@@ -65,23 +63,8 @@ export default { // export default means another JS file can read whatever is in
             }
         }
     }
-
-
-
-
-
 </script>
 <!----scoped means the styles will only apply to this component-->
 <style scoped> 
 
-
-
-
 </style>
-
-
-
-
-
-
-

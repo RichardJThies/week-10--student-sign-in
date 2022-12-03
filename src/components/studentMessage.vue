@@ -9,8 +9,6 @@
                 Goodbye, {{student.name}}, see you later.
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -22,21 +20,8 @@ export default { // export default means another JS file can read whatever is in
     }
 }
 
-
-
-
 </script>
 <!----scoped means the styles will only apply to this component-->
 <style scoped> 
 
-
-
-
 </style>
-
-
-
-
-
-
-

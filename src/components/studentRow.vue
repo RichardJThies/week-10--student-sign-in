@@ -4,7 +4,8 @@
     <td>{{student.starID}}</td> 
     <td>
         <input type="checkbox" v-bind:checked="student.present" v-on:change="arrivedOrLeft(student, $event.target.checked)"> <!--v-bind is 1 way data binding. v-on will call method if checkbox changes-->
-    </td>                                                                                       <!--^^$event.target is the html component(checkbox), .checked is boolean value-->
+    </td>
+    <td v-show="edit"><img src="@/assets/delete.png" v-on:click="deleteStudent"></td><!--v-pn:click can be added to any element, not just buttons-->                                                                                       <!--^^$event.target is the html component(checkbox), .checked is boolean value-->
 </tr>
 </template>
 
@@ -13,18 +14,19 @@ export default {
     name: 'StudentRow',
     emits: ['student-arrived-or-left'], //document what what component does, what event it emits
     props: {
-        student: Object
+        student: Object,
+        edit: Boolean //studentRow is being sent a v-bind instruction from parent on showing delete row & button for student rows
     },
     methods: {
         arrivedOrLeft(student, present){ //sends event to studentTable
-        this.$emit('student-arrived-or-left', student, present)
+            this.$emit('student-arrived-or-left', student, present)
+        },
+        deleteStudent(){//deleteStudent method itself cannot delete a student, must send event to studentTable which sends to App to delete student
+            this.$emit('delete-student', this.student)
         }
     }
 }
-
-
 </script>
-
 
 <style scoped>
 .present {
@@ -38,8 +40,4 @@ export default {
     font-weight: bold;
     background-color: bisque;
 }
-
-
-
-
 </style>

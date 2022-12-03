@@ -2,25 +2,32 @@
     <div>
         <div class="card student-list m-2 p-2">
             <h4 class="card-title">Student List</h4>
+
+            <div class="edit-table-toggle form-check">
+                <input id="edit-table" type="checkbox" class="form-check-input" v-model="editTable">
+                <label for="edit-table" class="form-check-label">Edit table?</label>
+            </div>
+
             <div id="student-table">
                 <table class="table">
                     <tr>
                         <th>Name</th>
                         <th>StarID</th>
                         <th>Present?</th>
+                        <th v-show="editTable">Delete?</th>
                     </tr>
 
                     <student-row 
                         v-for='student in students'
                         v-bind:student="student" 
                         v-bind:key="student.starID"
-                        v-on:student-arrived-or-left="arrivedOrLeft">
+                        v-bind:edit="editTable"
+                        v-on:student-arrived-or-left="arrivedOrLeft"
+                        v-on:delete-student="deleteStudent">
                     </student-row> <!--student row creates new studentRow components?-->
                 </table>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -35,25 +42,22 @@ export default { // export default means another JS file can read whatever is in
     props: {
         students: Array // Array is a data type, not value
     },
-    methods: {//not best pratice to have methods of the same name when sending events upward, confusing?
+    data() {
+        return {
+            editTable: false
+        }
+    },
+    methods: {//not best pratice to have methods of the same name as methods in child components when sending events upward. It's confusing?
         arrivedOrLeft(student, present) {//emit msg/event to parent, when the checkbox is checked or unchecked.
             this.$emit('student-arrived-or-left', student, present)//1st argument is sending the student object, containing name & starID. Present contains new value of whether they are present or not.
+        },
+        deleteStudent(student) {
+            this.$emit('delete-student', student)
         }
     }
 }
-
-
-
-
 </script>
 
 <style scoped> /*scoped means the styles will only apply to this component*/
 
 </style>
-
-
-
-
-
-
-
